@@ -7,6 +7,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import '../node_modules/react-vis/dist/style.css';
+import {XYPlot, LineSeries} from 'react-vis';
 import './App.css';
 
 function SayHello({ firstName }) {
@@ -20,6 +22,7 @@ function SayHello({ firstName }) {
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
+    maxWidth: 350,
   },
   bullet: {
     display: 'inline-block',
@@ -76,17 +79,37 @@ function D3Components() {
 }
 
 function App() {
+  const classes = useStyles();
   const [name, setName] = useState("Deven");
 
   const handleNameChange = (event) => {
     setName(event.target.value);
   }
 
+  const data = [
+    {x: 0, y: 8},
+    {x: 1, y: 5},
+    {x: 2, y: 4},
+    {x: 3, y: 9},
+    {x: 4, y: 1},
+    {x: 5, y: 7},
+    {x: 6, y: 6},
+    {x: 7, y: 3},
+    {x: 8, y: 2},
+    {x: 9, y: 0}
+  ];
+
   return (
     <div className="App">
       <input type="text" value={name} onChange={handleNameChange} />
       <SayHello firstName={name} />
-      <D3Components />
+      <Card className={classes.root}>
+        <CardContent>
+      <XYPlot height={300} width={300}>
+          <LineSeries data={data} />
+        </XYPlot>
+        </CardContent>
+        </Card>
     </div>
   );
 }

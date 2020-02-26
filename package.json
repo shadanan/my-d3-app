@@ -11,7 +11,8 @@
     "react-d3-components": "^0.9.1",
     "react-d3-donut": "^1.1.2",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "react-vis": "^1.11.7"
   },
   "scripts": {
     "start": "react-scripts start",
